@@ -3,8 +3,9 @@ const Usuario = require("../models/usuarioModel");
 
 module.exports = {
 
-    index(req, res){
-        res.json({mesage:"Hello World from usuário"});
+    async index(req, res){
+        const user = await Usuario.find();
+        res.json(user);
     },
 
     async create(req,res){
@@ -26,4 +27,15 @@ module.exports = {
         }
         
     },
+
+    async show(req, res){
+        //const { _id } = req.params;
+        const user = await Usuario.findById(req.params.id);
+        return res.json(user);
+    },
+
+    async destroy(req, res){
+        await Usuario.findByIdAndRemove(req.params.id);
+        return res.send();
+    }
 }
