@@ -11,7 +11,10 @@ const PORT = process.env.PORT || 5000;
 
 mongoose.connect("mongodb://localhost:27017/api-mern", {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+    
 }, function (err) {
     if(err){
         console.log(err);
