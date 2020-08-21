@@ -10,6 +10,7 @@ import List from '@material-ui/core/List';
 //import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
@@ -17,7 +18,7 @@ import { mainListItems, secondaryListItems } from './list-menu-admin';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
-    
+
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
     },
@@ -73,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     appBarSpacer: theme.mixins.toolbar,
-    
+
     fixedHeight: {
         height: 240,
     },
@@ -92,6 +93,8 @@ export default function MenuAdmin() {
 
     return (
         <>
+
+            <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
