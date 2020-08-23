@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: 15,
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
@@ -48,34 +48,47 @@ export default function UsuariosCadastrar() {
     <div className={classes.root}>
 
 
-      <MenuAdmin />
+      <MenuAdmin title={'Usuários'}/>
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
+
           <Grid container spacing={3}>
+            <Grid item sm={12}>
+
+              <Paper className={classes.paper}>
+
+                <h2>Formulário de cadastro</h2>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      id="firstName"
+                      name="firstName"
+                      label="First name"
+                      fullWidth
+                      autoComplete="given-name"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      id="lastName"
+                      name="lastName"
+                      label="Last name"
+                      fullWidth
+                      autoComplete="family-name"
+                    />
+                  </Grid>
+                </Grid>
+
+              </Paper>
+            </Grid>
 
 
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id="firstName"
-                name="firstName"
-                label="First name"
-                fullWidth
-                autoComplete="given-name"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id="lastName"
-                name="lastName"
-                label="Last name"
-                fullWidth
-                autoComplete="family-name"
-              />
-            </Grid>
+
+
 
 
           </Grid>
