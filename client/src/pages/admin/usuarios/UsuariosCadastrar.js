@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
+
+import TextField from '@material-ui/core/TextField';
 //import Paper from '@material-ui/core/Paper';
 //import ImgAdmin from "../../../assets/img/painel-mock.png"
 import Grid from '@material-ui/core/Grid';
@@ -45,14 +47,37 @@ export default function UsuariosCadastrar() {
   return (
     <div className={classes.root}>
 
-      
+
       <MenuAdmin />
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-        <Grid container spacing={3}>
-            <h1>Cadastro de usuário</h1>
+          <Grid container spacing={3}>
+
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="firstName"
+                name="firstName"
+                label="First name"
+                fullWidth
+                autoComplete="given-name"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="lastName"
+                name="lastName"
+                label="Last name"
+                fullWidth
+                autoComplete="family-name"
+              />
+            </Grid>
+
+
           </Grid>
 
           <Box pt={4}>
