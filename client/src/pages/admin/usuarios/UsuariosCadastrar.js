@@ -13,6 +13,11 @@ import MenuAdmin from "../../../components/menu-admin";
 
 import Footer from "../../../components/footer-admin";
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -37,6 +42,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
 
+  formControl:{
+    width="100%"
+  },
+
 }));
 
 
@@ -48,7 +57,7 @@ export default function UsuariosCadastrar() {
     <div className={classes.root}>
 
 
-      <MenuAdmin title={'Usuários'}/>
+      <MenuAdmin title={'Usuários'} />
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -59,28 +68,57 @@ export default function UsuariosCadastrar() {
 
               <Paper className={classes.paper}>
 
-                <h2>Formulário de cadastro</h2>
+                <h2>Cadastro de usuários</h2>
                 <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={12}>
                     <TextField
                       required
-                      id="firstName"
-                      name="firstName"
-                      label="First name"
+                      id="nome"
+                      name="nome"
+                      label="Nome completo"
                       fullWidth
-                      autoComplete="given-name"
+                      autoComplete="nome"
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField
                       required
-                      id="lastName"
-                      name="lastName"
-                      label="Last name"
+                      id="email"
+                      name="email"
+                      label="E-mail"
                       fullWidth
-                      autoComplete="family-name"
+                      autoComplete="email"
                     />
                   </Grid>
+
+
+                  <Grid item xs={12} sm={3}>
+                    <FormControl className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
+                      <Select
+                        labelId="labelTipo"
+                        id="tipo"
+                      //value={age}
+                      //onChange={handleChange}
+                      >
+                        <MenuItem value={1}>Administrador</MenuItem>
+                        <MenuItem value={2}>Funcionário</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+
+                  <Grid item xs={12} sm={3}>
+                    <TextField
+                      type="password"
+                      required
+                      id="senha"
+                      name="senha"
+                      label="senha"
+                      fullWidth
+                      autoComplete="senha"
+                    />
+                  </Grid>
+
                 </Grid>
 
               </Paper>
