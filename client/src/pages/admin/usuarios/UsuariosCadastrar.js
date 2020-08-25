@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 
 import TextField from '@material-ui/core/TextField';
-//import Paper from '@material-ui/core/Paper';
+import Paper from '@material-ui/core/Paper';
 //import ImgAdmin from "../../../assets/img/painel-mock.png"
 import Grid from '@material-ui/core/Grid';
 
@@ -17,6 +17,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+
+import Button from '@material-ui/core/Button';
+
+import api from "../../../services/api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
 
-  formControl:{
-    width="100%"
+  formControl: {
+    width: "100%"
   },
 
 }));
@@ -52,6 +56,47 @@ const useStyles = makeStyles((theme) => ({
 export default function UsuariosCadastrar() {
 
   const classes = useStyles();
+
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [tipo, setTipo] = useState('');
+
+  // eslint-disable-next-line
+  {/*
+    outra forma de fazer
+  const { form, setForm } = useState({
+    nome:'',
+    email:'',
+    senha:'',
+    tipo:''
+  });
+  */}
+
+  async function handleSubmit() {
+
+    const data = {
+      nome_usuario: nome,
+      email_usuario: email,
+      senha_usuario: senha,
+      tipo_usuario: tipo
+    }
+
+    if (nome !== '' && email !== '' && senha !== '' && tipo !== '') {
+
+      const response = await api.post("/api/usuarios", data);
+
+      if (response.status === 200) {
+        window.location.href = "/admin/usuarios"
+      } else {
+        alert("Erro ao cadastrar o usuário");
+      }
+
+    }else{
+      alert("preencha todo os campos");
+    }
+  }
+
 
   return (
     <div className={classes.root}>
@@ -78,6 +123,8 @@ export default function UsuariosCadastrar() {
                       label="Nome completo"
                       fullWidth
                       autoComplete="nome"
+                      value={nome}
+                      onChange={ev => setNome(ev.target.value)}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -88,6 +135,8 @@ export default function UsuariosCadastrar() {
                       label="E-mail"
                       fullWidth
                       autoComplete="email"
+                      value={email}
+                      onChange={ev => setEmail(ev.target.value)}
                     />
                   </Grid>
 
@@ -98,8 +147,8 @@ export default function UsuariosCadastrar() {
                       <Select
                         labelId="labelTipo"
                         id="tipo"
-                      //value={age}
-                      //onChange={handleChange}
+                        value={tipo}
+                        onChange={ev => setTipo(ev.target.value)}
                       >
                         <MenuItem value={1}>Administrador</MenuItem>
                         <MenuItem value={2}>Funcionário</MenuItem>
@@ -116,9 +165,16 @@ export default function UsuariosCadastrar() {
                       label="senha"
                       fullWidth
                       autoComplete="senha"
+                      value={senha}
+                      onChange={ev => setSenha(ev.target.value)}
                     />
                   </Grid>
 
+                  <Grid item xs={12} sm={12}>
+                    <Button variant="contained" color="primary" onClick={handleSubmit}>
+                      Salvar
+                    </Button>
+                  </Grid>
                 </Grid>
 
               </Paper>
