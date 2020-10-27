@@ -13,7 +13,7 @@ routes.post("/api/usuarios", Usuario.create);
 routes.get("/api/usuarios", Usuario.index);
 routes.get("/api/usuarios/:id", Usuario.show);
 routes.delete("/api/usuarios/:id", Usuario.destroy);
-routes.put("/api/usuarios/:id", Usuario.update);
+routes.put("/api/usuarios", Usuario.update);
 
 //rotas de produtos
 routes.post("/api/produtos", Produtos.create);
