@@ -74,6 +74,11 @@ export default function UsuariosListagem() {
     async function handleDelete(id) {
         if (window.confirm("Deseja realmente excluir esse usuário?")) {
             var result = await api.delete('/api/usuarios/' + id)
+            if(result.status === 200){
+                window.location.href = '/usuarios'
+            }else{
+                alert('Ocorreu um erro, por favor tente novamente')
+            }
         }
     }
 
@@ -127,7 +132,7 @@ export default function UsuariosListagem() {
                                                             <TableCell align="right">
 
                                                                 <ButtonGroup aria-label="outlined primary button group">
-                                                                    <Button color="primary">Atualizar</Button>
+                                                                    <Button color="primary" href={'/admin/usuario'}>Atualizar</Button>
                                                                     <Button color="secondary" onClick={() => handleDelete(row._id)}>Excluir</Button>
 
 
