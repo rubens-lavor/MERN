@@ -132,7 +132,7 @@ export default function UsuariosListagem() {
                                                             <TableCell align="right">
 
                                                                 <ButtonGroup aria-label="outlined primary button group">
-                                                                    <Button color="primary" href={'/admin/usuario'}>Atualizar</Button>
+                                                                    <Button color="primary" href={'/admin/usuarios/editar/'+row._id}>Atualizar</Button>
                                                                     <Button color="secondary" onClick={() => handleDelete(row._id)}>Excluir</Button>
 
 
