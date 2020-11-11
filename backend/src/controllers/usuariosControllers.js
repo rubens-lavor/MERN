@@ -1,6 +1,6 @@
 const Usuario = require("../models/usuarioModel");
-
-
+const jwt = require("jsonwebtoken")
+const secret = "mysecret"
 
 module.exports = {
 
@@ -57,11 +57,11 @@ module.exports = {
                 res.status(200).json({status:2,error:"E-mail ou senha não conferem"})
             }else {
                 const payload = { email }
-                const token = jwt.sign(payload, secrete, {
+                const token = jwt.sign(payload, secret, {
                     expiresIn:'24'
                 })
-                .res.cookie("token", token, {httpOnly:true})
-                .res.status(200).json({status:1, auth:true, token:token,id_client:user._id,})
+                res.cookie("token", token, {httpOnly:true})
+                res.status(200).json({status:1, auth:true, token:token,id_client:user._id,user_name:user.nome_usuario})
             }
         })
     }
