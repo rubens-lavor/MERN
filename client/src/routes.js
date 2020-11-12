@@ -17,6 +17,8 @@ import UsuariosCadastrar from "./pages/admin/usuarios/UsuariosCadastrar";
 import Home from "./pages/client/home";
 import ProdutoShow from "./pages/client/produtos/ProdutoShow";
 
+import Login from './pages/admin/login'
+
 function Routes(){
 
     return(
@@ -29,7 +31,8 @@ function Routes(){
 
                 {/** ROTA ADMIN */}
                 <Route path="/admin" exact component={Dashboard} />
-                
+                <Route path="/admin/login" exact component={Login} />
+
                 <Route path="/admin/produtos" exact component={Produtos} />
                 <Route path="/admin/produtos/cadastrar" exact component={ProdutosCadastrar} />
                 <Route path="/admin/produtos/editar/:idProduto" exact component={ProdutosEditar} />
