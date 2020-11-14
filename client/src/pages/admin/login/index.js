@@ -10,6 +10,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import api from '../../../services/api'
+
+import {setNomeUsuario, login, setIdUsuario} from '../../../services/auth'
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -53,7 +58,14 @@ export default function SignIn() {
     .then(res => {
         if(res.status === 200){
             if(res.data.status === 1){
-                
+                //token:token,id_client:user._id,user_name:user.nome_usuario
+                login(res.data.token)
+                setIdUsuario(res.data.id_client)
+                setNomeUsuario(res.data.user_name)
+
+                window.location.href = '/admin'
+            }else if (es.data.status === 2){
+                alert('Atenção: ' + res.data.error)
             }
         }else{
             alert('Erro no seridor')
