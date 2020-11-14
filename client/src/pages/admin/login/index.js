@@ -49,7 +49,16 @@ export default function SignIn() {
   const [ senha, setSenha ] = useState('')
 
   async function handleSubmit(){
-      alert("Autenticar:" + email)
+    await api.post('/api/usuarios/login',{email,senha})
+    .then(res => {
+        if(res.status === 200){
+            if(res.data.status === 1){
+                
+            }
+        }else{
+            alert('Erro no seridor')
+        }
+    })
   }
 
   return (
