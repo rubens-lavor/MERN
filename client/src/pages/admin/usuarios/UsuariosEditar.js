@@ -76,16 +76,6 @@ export default function UsuariosCadastrar() {
         getUsuario()
     }, [])
 
-    // eslint-disable-next-line
-    {/*
-    outra forma de fazer
-  const { form, setForm } = useState({
-    nome:'',
-    email:'',
-    senha:'',
-    tipo:''
-  });
-  */}
 
     async function handleSubmit() {
 
