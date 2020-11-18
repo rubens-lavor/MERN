@@ -64,7 +64,7 @@ export default function SignIn() {
                 setNomeUsuario(res.data.user_name)
 
                 window.location.href = '/admin'
-            }else if (es.data.status === 2){
+            }else if (res.data.status === 2){
                 alert('Atenção: ' + res.data.error)
             }
         }else{
@@ -83,7 +83,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Login
         </Typography>
-        <form className={classes.form} noValidate>
+
           <TextField
             variant="outlined"
             margin="normal"
@@ -111,7 +111,6 @@ export default function SignIn() {
             onChange={e=>setSenha(e.target.value)}
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
@@ -121,7 +120,6 @@ export default function SignIn() {
             Entrar
           </Button>
        
-        </form>
       </div>
       <Box mt={8}>
         <Copyright />
