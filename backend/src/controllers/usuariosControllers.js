@@ -75,7 +75,6 @@ module.exports = {
     },
     async checkToken(req,res){
         const token = req.body.token || req.query.token || req.cookies.token || req.headers['x-acess-token']
-        req.token = token
         if(!token){
             res.json({status:401, msg:"Não autorizado: Token inválido!"})
         } else {
@@ -83,7 +82,6 @@ module.exports = {
                 if(err){
                     res.json({status:401, msg:"Não autorizado: Token inválido!"})
                 }else{
-                    req.email = decoded.email
                     req.json({status:200})
                 }
             })
