@@ -16,8 +16,9 @@ import UsuariosCadastrar from "./pages/admin/usuarios/UsuariosCadastrar";
 //IMPORT CLIENT
 import Home from "./pages/client/home";
 import ProdutoShow from "./pages/client/produtos/ProdutoShow";
-
 import Login from './pages/admin/login'
+
+import PrivateRoute from './services/wAuth'
 
 function Routes(){
 
@@ -38,7 +39,7 @@ function Routes(){
                 <Route path="/admin/produtos/editar/:idProduto" exact component={ProdutosEditar} />
 
                 {/** ROTA USUÁRIO */}
-                <Route path="/admin/usuarios" exact component={Usuarios} />
+                <PrivateRoute path="/admin/usuarios" exact component={Usuarios} />
                 <Route path="/admin/usuarios/cadastrar" exact component={UsuariosCadastrar} />
                 <Route path="/admin/usuarios/editar/:idUsuario" exact component={UsuariosEditar} />
 
