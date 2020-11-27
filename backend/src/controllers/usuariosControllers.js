@@ -82,7 +82,7 @@ module.exports = {
                 if(err){
                     res.json({status:401, msg:"Não autorizado: Token inválido!"})
                 }else{
-                    req.json({status:200})
+                    res.json({status:200})
                 }
             })
         }
