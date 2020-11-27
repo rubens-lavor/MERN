@@ -74,7 +74,7 @@ module.exports = {
         })
     },
     async checkToken(req,res){
-        const token = req.body.token || req.query.token || req.cookies.token || req.headers['x-acess-token']
+        const token = req.body.token || req.query.token || req.cookies.token || req.headers['x-access-token']
         if(!token){
             res.json({status:401, msg:"Não autorizado: Token inválido!"})
         } else {
