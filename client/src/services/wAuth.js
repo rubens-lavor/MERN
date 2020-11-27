@@ -26,9 +26,9 @@ export default function WAuth({ component: Component, ...rest }) {
 
     return (
         loading ? 'Carregando...' : <Route {...rest}
-            render={props => !redirect ?
-                <Component {...props} /> :
-                <Redirect to={{ pathname: '/admin/login', state: { from: props.location } }} />
+            render={props => !redirect ? (
+                <Component {...props} /> 
+                ):<Redirect to={{ pathname: '/admin/login', state: { from: props.location } }} />
             } />
     )
 }

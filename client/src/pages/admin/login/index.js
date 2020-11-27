@@ -58,7 +58,6 @@ export default function SignIn() {
     .then(res => {
         if(res.status === 200){
             if(res.data.status === 1){
-                //token:token,id_client:user._id,user_name:user.nome_usuario
                 login(res.data.token)
                 setIdUsuario(res.data.id_client)
                 setNomeUsuario(res.data.user_name)
