@@ -10,7 +10,7 @@ export default function WAuth({ component: Component, ...rest }) {
 
     useEffect(() => {
         async function verify() {
-            var res = await api.get('/gettoken', { params: { token: getToken() } })
+            var res = await api.get('/api/usuarios/checktoken', { params: { token: getToken() } })
 
             if (res.data.status === 200) {
                 setLoading(false)
@@ -27,8 +27,8 @@ export default function WAuth({ component: Component, ...rest }) {
     return (
         loading ? 'Carregando...' : <Route {...rest}
             render={props => !redirect ? (
-                <Component {...props} /> 
-                ):<Redirect to={{ pathname: '/admin/login', state: { from: props.location } }} />
+                <Component {...props} />
+            ) : <Redirect to={{ pathname: '/admin/login', state: { from: props.location } }} />
             } />
     )
 }
