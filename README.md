@@ -1,5 +1,7 @@
 ## MERN
 
+O projeto consiste num dashboard administrativo
+
 ## Descrição
 
 ## Tecnologias:
