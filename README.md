@@ -1,8 +1,8 @@
 ## MERN
 
-## Descrição
+O projeto consiste num dashboard administrativo
 
-## Tecnologias:
+### Tecnologias:
 - React
 - UIMaterial
 - MongoDB
