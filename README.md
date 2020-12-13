@@ -2,9 +2,7 @@
 
 O projeto consiste num dashboard administrativo
 
-## Descrição
-
-## Tecnologias:
+### Tecnologias:
 - React
 - UIMaterial
 - MongoDB
