@@ -30,3 +30,48 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Visual Studio Code](https://code.visualstudio.com)
 - [Insomnia](https://insomnia.rest)
 - [MongoDB Compass](https://www.mongodb.com)
+
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) e o banco de dados não relacional [MongoDB](https://github.com/mongodb/mongo). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+### Rodando o Back End (servidor)
+
+```bash
+# Clone este repositório
+$ git clone <https://github.com/rubens-lavor/MERN.git>
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd MERN
+
+# Vá para a pasta backend
+$ cd backend
+
+# Instale as dependências
+$ npm install
+
+
+# Executea a aplicação backend 
+$ npm run server
+
+# O servidor inciará na porta:5000 - acesse <http://localhost:5000>
+```
+
+
+### Rodando o Front End (cliente)
+
+```bash
+# Retorne ao diretório raiz
+$ cd ..
+
+# Vá para a pasta client
+$ cd client
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação frontend
+$ npm run start
