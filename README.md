@@ -24,14 +24,14 @@ O projeto consiste num dashboard administrativo
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React](https://github.com/facebook/react)
 - [Express](https://github.com/expressjs/express)
-- [UIMaterial](https://github.com/expressjs/express)
-- [MongoDB](https://github.com/expressjs/express)
+- [UIMaterial](https://github.com/mui-org/material-ui)
+- [MongoDB](https://github.com/mongodb/mongo)
 
 ## Ferramentas
 
 - [Visual Studio Code](https://code.visualstudio.com)
 - [Insomnia](https://insomnia.rest)
-- [Expo](https://expo.io/)
+- [MongoDB Compass](https://www.mongodb.com)
 
 ## Contribuição
 
