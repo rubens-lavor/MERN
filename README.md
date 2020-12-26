@@ -40,3 +40,4 @@ Contribuições são o que fazem a comunidade de código livre um maravilhoso lu
 3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
 4. Push para a branch criada (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
+
