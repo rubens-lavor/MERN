@@ -31,8 +31,8 @@ function Routes(){
                 <Route path="/produto/:idProduto" exact component={ProdutoShow} />
 
                 {/** ROTA ADMIN */}
-                <PrivateRoute path="/admin" exact component={Dashboard} />
                 <Route path="/admin/login" exact component={Login} />
+                <PrivateRoute path="/admin" exact component={Dashboard} />
 
                 <PrivateRoute path="/admin/produtos" exact component={Produtos} />
                 <PrivateRoute path="/admin/produtos/cadastrar" exact component={ProdutosCadastrar} />
