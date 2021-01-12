@@ -8,6 +8,9 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
 //import AssignmentIcon from '@material-ui/icons/Assignment';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import api from '../services/api';
+
+import {getToken, logout} from "../services/auth"
 
 export const mainListItems = (
   <div>
@@ -39,7 +42,7 @@ export const mainListItems = (
 export const secondaryListItems = (
   <div>
     <ListSubheader inset>Opções</ListSubheader>
-    <ListItem button>
+    <ListItem button onClick={confirmSair}>
       <ListItemIcon>
         <ExitToAppIcon />
       </ListItemIcon>
@@ -48,3 +51,15 @@ export const secondaryListItems = (
    
   </div>
 );
+
+async function confirmSair(){
+    if(window.confirm('Deseja realmente sair?')){
+        const response = await api.get("/api/lista_usuarios/destroytoken",{headers:{token:getToken()}})
+        if(response.status === 200){
+            logout()
+            window.location.href = '/admin/login'
+        }else{
+            alert('Não foi possível fazer o logout')
+        }
+    }
+}
