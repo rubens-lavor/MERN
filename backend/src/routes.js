@@ -16,6 +16,7 @@ routes.delete("/api/usuarios/:id", Usuario.destroy);
 routes.put("/api/usuarios", Usuario.update);
 routes.post("/api/usuarios/login", Usuario.login);
 routes.get("/api/lista_usuarios/checktoken", Usuario.checkToken);
+routes.get("/api/lista_usuarios/destroytoken", Usuario.destroyToken);
 
 
 //rotas de produtos
