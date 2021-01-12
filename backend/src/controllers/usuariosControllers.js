@@ -95,7 +95,7 @@ module.exports = {
         }else{
             res.status(401).send('logout não autorizado')
         }
-        res.send
+        res.send('Sessão finalizada com sucesso!')
     }
 
 }
