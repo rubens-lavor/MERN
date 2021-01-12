@@ -31,17 +31,17 @@ function Routes(){
                 <Route path="/produto/:idProduto" exact component={ProdutoShow} />
 
                 {/** ROTA ADMIN */}
-                <Route path="/admin" exact component={Dashboard} />
+                <PrivateRoute path="/admin" exact component={Dashboard} />
                 <Route path="/admin/login" exact component={Login} />
 
-                <Route path="/admin/produtos" exact component={Produtos} />
-                <Route path="/admin/produtos/cadastrar" exact component={ProdutosCadastrar} />
-                <Route path="/admin/produtos/editar/:idProduto" exact component={ProdutosEditar} />
+                <PrivateRoute path="/admin/produtos" exact component={Produtos} />
+                <PrivateRoute path="/admin/produtos/cadastrar" exact component={ProdutosCadastrar} />
+                <PrivateRoute path="/admin/produtos/editar/:idProduto" exact component={ProdutosEditar} />
 
                 {/** ROTA USUÁRIO */}
                 <PrivateRoute path="/admin/usuarios" exact component={Usuarios} />
-                <Route path="/admin/usuarios/cadastrar" exact component={UsuariosCadastrar} />
-                <Route path="/admin/usuarios/editar/:idUsuario" exact component={UsuariosEditar} />
+                <PrivateRoute path="/admin/usuarios/cadastrar" exact component={UsuariosCadastrar} />
+                <PrivateRoute path="/admin/usuarios/editar/:idUsuario" exact component={UsuariosEditar} />
 
             </Switch>
         </BrowserRouter>
