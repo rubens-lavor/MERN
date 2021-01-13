@@ -26,6 +26,8 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import Chip from '@material-ui/core/Chip';
 
+import { getNomeTipo } from '../../../functions/static_date'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -74,9 +76,9 @@ export default function UsuariosListagem() {
     async function handleDelete(id) {
         if (window.confirm("Deseja realmente excluir esse usuário?")) {
             var result = await api.delete('/api/usuarios/' + id)
-            if(result.status === 200){
+            if (result.status === 200) {
                 window.location.href = '/usuarios'
-            }else{
+            } else {
                 alert('Ocorreu um erro, por favor tente novamente')
             }
         }
@@ -117,22 +119,18 @@ export default function UsuariosListagem() {
                                                             <TableCell component="th" scope="row">
                                                                 {row.nome_usuario}
                                                             </TableCell>
-                                                            <TableCell align="center">{row.tipo_usuario === 1 ?
+                                                            <TableCell align="center">
                                                                 <Chip
-                                                                    label="Administrador"
+                                                                    label={getNomeTipo(row.tipo_usuario)}
                                                                     color="primary"
-                                                                /> :
-                                                                <Chip
-                                                                    label="Funcionário"
-                                                                    color="secondary"
-                                                                />}
+                                                                />
                                                             </TableCell>
                                                             <TableCell align="center">{new Date(row.createdAt).toLocaleString("pt-br")}</TableCell>
                                                             <TableCell align="center">{row.email_usuario}</TableCell>
                                                             <TableCell align="right">
 
                                                                 <ButtonGroup aria-label="outlined primary button group">
-                                                                    <Button color="primary" href={'/admin/usuarios/editar/'+row._id}>Atualizar</Button>
+                                                                    <Button color="primary" href={'/admin/usuarios/editar/' + row._id}>Atualizar</Button>
                                                                     <Button color="secondary" onClick={() => handleDelete(row._id)}>Excluir</Button>
 
 
