@@ -16,6 +16,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import { mainListItems, secondaryListItems } from './list-menu-admin';
 import { getNomeUsuario } from '../services/auth'
+
+// import logoSistema from '../assets/img/logo-sistema'
+
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
 
@@ -122,6 +125,10 @@ export default function MenuAdmin({ title }) {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
+
+                    {/** logo no canto superior esquerdo
+                     * <img style={{width:150,height:50}} src={logoSistema} alt="Logo sistema" />
+                     */}
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
                     </IconButton>
