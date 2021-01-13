@@ -66,7 +66,7 @@ export default function UsuariosCadastrar() {
     useEffect(() => {
         async function getUsuario() {
             var response = await api.get('/api/usuarios/' + idUsuario)
-            
+
             setNome(response.data.nome_usuario)
             setEmail(response.data.email_usuario)
             setSenha(response.data.senha_usuario)
@@ -84,7 +84,7 @@ export default function UsuariosCadastrar() {
             email_usuario: email,
             senha_usuario: senha,
             tipo_usuario: tipo,
-            _id:idUsuario,
+            _id: idUsuario,
         }
 
         if (nome !== '' && email !== '' && senha !== '' && tipo !== '') {
@@ -156,7 +156,8 @@ export default function UsuariosCadastrar() {
                                                 onChange={ev => setTipo(ev.target.value)}
                                             >
                                                 <MenuItem value={1}>Administrador</MenuItem>
-                                                <MenuItem value={2}>Funcionário</MenuItem>
+                                                <MenuItem value={2}>Gerente</MenuItem>
+                                                <MenuItem value={3}>Funcionário</MenuItem>
                                             </Select>
                                         </FormControl>
                                     </Grid>
