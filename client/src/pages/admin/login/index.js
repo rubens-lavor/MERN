@@ -12,7 +12,7 @@ import Container from '@material-ui/core/Container';
 
 import api from '../../../services/api'
 
-import {setNomeUsuario, login, setIdUsuario} from '../../../services/auth'
+import {setNomeUsuario, login, setIdUsuario, setTipoUsuario} from '../../../services/auth'
 
 
 function Copyright() {
@@ -61,6 +61,7 @@ export default function SignIn() {
                 login(res.data.token)
                 setIdUsuario(res.data.id_client)
                 setNomeUsuario(res.data.user_name)
+                setTipoUsuario(res.data.user_type)
 
                 window.location.href = '/admin'
             }else if (res.data.status === 2){
