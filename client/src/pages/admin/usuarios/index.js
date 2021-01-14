@@ -26,7 +26,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import Chip from '@material-ui/core/Chip';
 
-import { getNomeTipo } from '../../../functions/static_date'
+import { getNomeTipo, getNomeTipoLabel } from '../../../functions/static_date'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -122,7 +122,7 @@ export default function UsuariosListagem() {
                                                             <TableCell align="center">
                                                                 <Chip
                                                                     label={getNomeTipo(row.tipo_usuario)}
-                                                                    color="primary"
+                                                                    color={getNomeTipoLabel(row.tipo_usuario)}
                                                                 />
                                                             </TableCell>
                                                             <TableCell align="center">{new Date(row.createdAt).toLocaleString("pt-br")}</TableCell>
