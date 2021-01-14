@@ -11,3 +11,8 @@ export const getNomeTipo = (valor) => {
 
     return nome_tipo;
 }
+
+export const getNomeTipoLabel = (valor) => {
+    var arr = ['primary','default','secondary']
+    return arr[valor - 1]
+}
