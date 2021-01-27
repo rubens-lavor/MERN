@@ -49,7 +49,7 @@ module.exports = {
     },
     async login(req, res) {
         const { email, senha } = req.body;
-        Usuario.findOne({ email_usuario: email, tipo_usuario: 1 }, function (err, user) {
+        Usuario.findOne({ email_usuario: email /*, tipo_usuario: 1*/ }, function (err, user) {
             if (err) {
                 console.log(err);
                 res.status(200).json({ erro: "Erro no servidor. Por favor, tente novamente" })
