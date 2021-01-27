@@ -9,8 +9,10 @@ import Container from '@material-ui/core/Container';
 import ImgAdmin from "../../../assets/img/painel-mock.png"
 
 import MenuAdmin from "../../../components/menu-admin";
+import { getTipoUsuario } from '../../../services/auth'
 
 import Footer from "../../../components/footer-admin";
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,6 +40,15 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+function getDashboard(){
+    if (getTipoUsuario()===1){
+        return <DashAdmin />
+    }else if (getTipoUsuario()===2){
+        return <DashGerente />
+    }else{
+        return <DashFuncionario />
+    }
+}
 
 export default function Dashboard() {
 
@@ -51,7 +62,10 @@ export default function Dashboard() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-
+                    <Grid container spacing={3}>
+                        {getDashboard()}
+                        <img src={ImgAdmin} />
+                    </Grid>
                     <div style={{ textAlign: "center" }}>
 
                         <img src={ImgAdmin} alt="imagem logo dashboard" style={{ width: "80%" }} />
