@@ -52,6 +52,7 @@ export default function SignIn() {
   const classes = useStyles();
   const [ email, setEmail ] = useState('')
   const [ senha, setSenha ] = useState('')
+  const [ showPassword, setShowPassword ] = useState(false)
 
   async function handleSubmit(){
     await api.post('/api/usuarios/login',{email,senha})
@@ -97,6 +98,7 @@ export default function SignIn() {
             value={email}
             onChange={e=>setEmail(e.target.value)}
           />
+          {/*}
           <TextField
             variant="outlined"
             margin="normal"
@@ -109,6 +111,27 @@ export default function SignIn() {
             autoComplete="current-password"
             value={senha}
             onChange={e=>setSenha(e.target.value)}
+          />
+        {*/}
+          <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+          <InputLabel htmlFor="campoSenha">Digite sua senha</InputLabel>
+          <OutlinedInput
+            id="campoSenha"
+            type={showPassword ? 'text' : 'password'}
+            value={senha}
+            onChange={handleChange('password')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={ e => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
           />
           <Button
             fullWidth
