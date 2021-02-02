@@ -15,6 +15,18 @@ import api from '../../../services/api'
 import {setNomeUsuario, login, setIdUsuario, setTipoUsuario} from '../../../services/auth'
 
 
+import IconButton from '@material-ui/core/IconButton';
+
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+import FormControl from '@material-ui/core/FormControl';
+//import TextField from '@material-ui/core/TextField';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -113,7 +125,7 @@ export default function SignIn() {
             onChange={e=>setSenha(e.target.value)}
           />
         {*/}
-          <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+          <FormControl variant="outlined">
           <InputLabel htmlFor="campoSenha">Digite sua senha</InputLabel>
           <OutlinedInput
             id="campoSenha"
