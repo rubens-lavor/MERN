@@ -125,7 +125,7 @@ export default function SignIn() {
             onChange={e=>setSenha(e.target.value)}
           />
         {*/}
-          <FormControl variant="outlined">
+          <FormControl variant="outlined" style={{width:'100%', marginTop:10}}>
           <InputLabel htmlFor="campoSenha">Digite sua senha</InputLabel>
           <OutlinedInput
             id="campoSenha"
@@ -143,7 +143,7 @@ export default function SignIn() {
                 </IconButton>
               </InputAdornment>
             }
-            labelWidth={70}
+            labelWidth={120}
           />
           </FormControl>
           
