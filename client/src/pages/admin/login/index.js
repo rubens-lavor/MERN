@@ -133,6 +133,8 @@ export default function SignIn() {
             }
             labelWidth={70}
           />
+          </FormControl>
+          
           <Button
             fullWidth
             variant="contained"
@@ -142,8 +144,8 @@ export default function SignIn() {
           >
             Entrar
           </Button>
-       
       </div>
+
       <Box mt={8}>
         <Copyright />
       </Box>
