@@ -27,6 +27,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -65,8 +67,10 @@ export default function SignIn() {
   const [ email, setEmail ] = useState('')
   const [ senha, setSenha ] = useState('')
   const [ showPassword, setShowPassword ] = useState(false)
+  const [ loading, setLoading ] = useState(false)
 
   async function handleSubmit(){
+      setLoading(true)
     await api.post('/api/usuarios/login',{email,senha})
     .then(res => {
         if(res.status === 200){
@@ -80,8 +84,10 @@ export default function SignIn() {
             }else if (res.data.status === 2){
                 alert('Atenção: ' + res.data.error)
             }
+            setLoading(false)
         }else{
             alert('Erro no seridor')
+            setLoading(false)
         }
     })
   }
@@ -153,8 +159,9 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
             onClick={handleSubmit}
+            disabled={loading}
           >
-            Entrar
+              {loading? <CircularProgress />:"ENTRAR"} 
           </Button>
       </div>
 
