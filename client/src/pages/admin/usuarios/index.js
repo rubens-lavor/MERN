@@ -27,6 +27,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Chip from '@material-ui/core/Chip';
 
 import { getNomeTipo, getNomeTipoLabel } from '../../../functions/static_date'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,16 +62,18 @@ export default function UsuariosListagem() {
 
     const classes = useStyles();
 
-    const [usuarios, setUsuarios] = useState([
-
-    ]);
+    const [usuarios, setUsuarios] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
         async function loadUsuarios() {
             const response = await api.get("/api/usuarios");
             setUsuarios(response.data);
+            setLoading(false);
         }
-        loadUsuarios();
+        setTimeout(()=>loadUsuarios(),1000)
+
+        //loadUsuarios();
     }, []);
 
     async function handleDelete(id) {
@@ -102,6 +105,7 @@ export default function UsuariosListagem() {
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={12}>
                                         <TableContainer component={Paper}>
+                                            {loading?(<LinearProgress style={{width:'50%', margin:'20px auto'}} />):(
                                             <Table className={classes.table} aria-label="simple table">
                                                 <TableHead>
                                                     <TableRow>
@@ -141,6 +145,7 @@ export default function UsuariosListagem() {
 
                                                 </TableBody>
                                             </Table>
+                                            )}
                                         </TableContainer>
                                     </Grid>
                                 </Grid>
