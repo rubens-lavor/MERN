@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     width: "100%"
   },
-  btnSuccess:{ backgroundColor:"green", color:"#fff","&:hover":{backgroundColor:"#12b912"}  }
+  btnSuccess: { backgroundColor: "green", color: "#fff", "&:hover": { backgroundColor: "#12b912" } }
 }));
 
 
@@ -92,7 +92,7 @@ export default function UsuariosCadastrar() {
         alert("Erro ao cadastrar o usuário");
       }
 
-    }else{
+    } else {
       alert("preencha todo os campos");
     }
   }
@@ -111,7 +111,7 @@ export default function UsuariosCadastrar() {
           <Grid container spacing={3}>
             <Grid item sm={12}>
 
-            <Button style={{marginBottom:10}} variant="contained" href={'/admin/usuarios'}>Voltar</Button>
+              <Button style={{ marginBottom: 10 }} variant="contained" href={'/admin/usuarios'}>Voltar</Button>
 
               <Paper className={classes.paper}>
 
@@ -172,7 +172,7 @@ export default function UsuariosCadastrar() {
                       onChange={ev => setSenha(ev.target.value)}
                     />
                   </Grid>
-
+                  
                   <Grid item xs={12} sm={12}>
                     <Button variant="contained" onClick={handleSubmit} className={classes.btnSuccess}>
                       Salvar
@@ -183,11 +183,9 @@ export default function UsuariosCadastrar() {
               </Paper>
             </Grid>
           </Grid>
-
           <Box pt={4}>
             <Footer />
           </Box>
-
         </Container>
       </main>
     </div>
