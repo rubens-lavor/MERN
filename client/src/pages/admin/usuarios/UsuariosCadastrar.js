@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
   },
   container: {
-    paddingTop: theme.spacing(4),
+    paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(4),
   },
   paper: {
@@ -110,6 +110,8 @@ export default function UsuariosCadastrar() {
 
           <Grid container spacing={3}>
             <Grid item sm={12}>
+
+            <Button style={{marginBottom:10}} variant="contained" href={'/admin/usuarios'}>Voltar</Button>
 
               <Paper className={classes.paper}>
 
