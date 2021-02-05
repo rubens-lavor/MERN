@@ -30,28 +30,28 @@ import { getNomeTipo, getNomeTipoLabel } from '../../../functions/static_date'
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    title: {
-        flexGrow: 1,
-    },
-    appBarSpacer: theme.mixins.toolbar,
-    content: {
-        flexGrow: 1,
-        height: '100vh',
-        overflow: 'auto',
-    },
-    container: {
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(4),
-    },
-    paper: {
-        padding: theme.spacing(2),
-        display: 'flex',
-        overflow: 'auto',
-        flexDirection: 'column',
-    },
+  root: {
+    display: 'flex',
+  },
+  title: {
+    flexGrow: 1,
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
 
 }));
 
@@ -60,109 +60,109 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UsuariosListagem() {
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    const [usuarios, setUsuarios] = useState([]);
-    const [ loading, setLoading ] = useState(true);
+  const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        async function loadUsuarios() {
-            const response = await api.get("/api/usuarios");
-            setUsuarios(response.data);
-            setLoading(false);
-        }
-        setTimeout(()=>loadUsuarios(),1000)
-
-        //loadUsuarios();
-    }, []);
-
-    async function handleDelete(id) {
-        if (window.confirm("Deseja realmente excluir esse usuário?")) {
-            var result = await api.delete('/api/usuarios/' + id)
-            if (result.status === 200) {
-                window.location.href = '/usuarios'
-            } else {
-                alert('Ocorreu um erro, por favor tente novamente')
-            }
-        }
+  useEffect(() => {
+    async function loadUsuarios() {
+      const response = await api.get("/api/usuarios");
+      setUsuarios(response.data);
+      setLoading(false);
     }
+    
+    //setTimeout(()=>loadUsuarios(),1000)
+    loadUsuarios();
+  }, []);
 
-    return (
-        <div className={classes.root}>
+  async function handleDelete(id) {
+    if (window.confirm("Deseja realmente excluir esse usuário?")) {
+      var result = await api.delete('/api/usuarios/' + id)
+      if (result.status === 200) {
+        window.location.href = '/usuarios'
+      } else {
+        alert('Ocorreu um erro, por favor tente novamente')
+      }
+    }
+  }
 
-            <MenuAdmin title={"Usuários"} />
+  return (
+    <div className={classes.root}>
 
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
+      <MenuAdmin title={"Usuários"} />
 
-
-                    <Grid container spacing={3}>
-                        <Grid item sm={12}>
-                        <Button style={{marginBottom:10}} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>Cadastrar</Button>
-                            <Paper className={classes.paper}>
-
-                                <h2>Listagem de usuários</h2>
-                                <Grid container spacing={3}>
-                                    <Grid item xs={12} sm={12}>
-                                        <TableContainer component={Paper}>
-                                            {loading?(<LinearProgress style={{width:'50%', margin:'20px auto'}} />):(
-                                            <Table className={classes.table} aria-label="simple table">
-                                                <TableHead>
-                                                    <TableRow>
-                                                        <TableCell align="center">Nome</TableCell>
-                                                        <TableCell align="center">Email</TableCell>
-                                                        <TableCell align="center">Tipo</TableCell>
-                                                        <TableCell align="center">Data de Cadastro</TableCell>
-                                                        <TableCell align="center">Opções</TableCell>
-                                                    </TableRow>
-                                                </TableHead>
-                                                <TableBody>
-
-                                                    {usuarios.map((row) => (
-                                                        <TableRow key={row._id}>
-                                                            <TableCell component="th" scope="row">
-                                                                {row.nome_usuario}
-                                                            </TableCell>
-                                                            <TableCell align="center">
-                                                                <Chip
-                                                                    label={getNomeTipo(row.tipo_usuario)}
-                                                                    color={getNomeTipoLabel(row.tipo_usuario)}
-                                                                />
-                                                            </TableCell>
-                                                            <TableCell align="center">{new Date(row.createdAt).toLocaleString("pt-br")}</TableCell>
-                                                            <TableCell align="center">{row.email_usuario}</TableCell>
-                                                            <TableCell align="right">
-
-                                                                <ButtonGroup aria-label="outlined primary button group">
-                                                                    <Button variant="contained" color="primary" href={'/admin/usuarios/editar/' + row._id}>Atualizar</Button>
-                                                                    <Button color="secondary" onClick={() => handleDelete(row._id)}>Excluir</Button>
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
 
 
-                                                                </ButtonGroup>
-                                                            </TableCell>
-                                                        </TableRow>
-                                                    ))}
+          <Grid container spacing={3}>
+            <Grid item sm={12}>
+              <Button style={{ marginBottom: 10 }} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>Cadastrar</Button>
+              <Paper className={classes.paper}>
 
-                                                </TableBody>
-                                            </Table>
-                                            )}
-                                        </TableContainer>
-                                    </Grid>
-                                </Grid>
+                <h2>Listagem de usuários</h2>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} sm={12}>
+                    <TableContainer component={Paper}>
+                      {loading ? (<LinearProgress style={{ width: '50%', margin: '20px auto' }} />) : (
+                        <Table className={classes.table} aria-label="simple table">
+                          <TableHead>
+                            <TableRow>
+                              <TableCell align="center">Nome</TableCell>
+                              <TableCell align="center">Email</TableCell>
+                              <TableCell align="center">Tipo</TableCell>
+                              <TableCell align="center">Data de Cadastro</TableCell>
+                              <TableCell align="center">Opções</TableCell>
+                            </TableRow>
+                          </TableHead>
+                          <TableBody>
+
+                            {usuarios.map((row) => (
+                              <TableRow key={row._id}>
+                                <TableCell component="th" scope="row">
+                                  {row.nome_usuario}
+                                </TableCell>
+                                <TableCell align="center">
+                                  <Chip
+                                    label={getNomeTipo(row.tipo_usuario)}
+                                    color={getNomeTipoLabel(row.tipo_usuario)}
+                                  />
+                                </TableCell>
+                                <TableCell align="center">{new Date(row.createdAt).toLocaleString("pt-br")}</TableCell>
+                                <TableCell align="center">{row.email_usuario}</TableCell>
+                                <TableCell align="right">
+
+                                  <ButtonGroup aria-label="outlined primary button group">
+                                    <Button variant="contained" color="primary" href={'/admin/usuarios/editar/' + row._id}>Atualizar</Button>
+                                    <Button color="secondary" onClick={() => handleDelete(row._id)}>Excluir</Button>
 
 
-                            </Paper>
-                        </Grid>
+                                  </ButtonGroup>
+                                </TableCell>
+                              </TableRow>
+                            ))}
 
-                    </Grid>
+                          </TableBody>
+                        </Table>
+                      )}
+                    </TableContainer>
+                  </Grid>
+                </Grid>
 
-                    <Box pt={4}>
-                        <Footer />
-                    </Box>
 
-                </Container>
-            </main>
-        </div>
-    );
+              </Paper>
+            </Grid>
+
+          </Grid>
+
+          <Box pt={4}>
+            <Footer />
+          </Box>
+
+        </Container>
+      </main>
+    </div>
+  );
 }
