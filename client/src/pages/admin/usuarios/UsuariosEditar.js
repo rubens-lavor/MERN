@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     formControl: {
         width: "100%"
     },
-
+    btnSucess:{ backgroundColor:"green", color:"#fff","&:hover":{backgroundColor:"#12b912"}  }
 }));
 
 
@@ -115,7 +115,7 @@ export default function UsuariosCadastrar() {
 
                     <Grid container spacing={3}>
                         <Grid item sm={12}>
-                        <Button style={{marginBottom:10}} variant="contained" href={'/admin/usuarios'}>Voltar</Button>
+                        <Button style={{marginBottom:10,marginRight:5}} variant="contained" href={'/admin/usuarios'}>Voltar</Button>
                         <Button style={{marginBottom:10}} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>Cadastrar</Button>
 
                             <Paper className={classes.paper}>
@@ -179,9 +179,9 @@ export default function UsuariosCadastrar() {
                                     </Grid>
 
                                     <Grid item xs={12} sm={12}>
-                                        <Button variant="contained" color="primary" onClick={handleSubmit}>
+                                        <Button variant="contained" onClick={handleSubmit} className={classes.btnSucess}>
                                             Salvar
-                    </Button>
+                                        </Button>
                                     </Grid>
                                 </Grid>
 
