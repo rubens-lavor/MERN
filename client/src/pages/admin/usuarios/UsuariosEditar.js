@@ -115,6 +115,8 @@ export default function UsuariosCadastrar() {
 
                     <Grid container spacing={3}>
                         <Grid item sm={12}>
+                        <Button style={{marginBottom:10}} variant="contained" href={'/admin/usuarios'}>Voltar</Button>
+                        <Button style={{marginBottom:10}} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>Cadastrar</Button>
 
                             <Paper className={classes.paper}>
 
