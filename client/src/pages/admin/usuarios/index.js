@@ -31,6 +31,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 import AddIcon from '@material-ui/icons/Add';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -145,8 +146,10 @@ export default function UsuariosListagem() {
                                       <RefreshIcon />
                                       Atualizar
                                     </Button>
-                                    <Button color="secondary" onClick={() => handleDelete(row._id)}>Excluir</Button>
-
+                                    <Button color="secondary" onClick={() => handleDelete(row._id)}>
+                                      <DeleteIcon/>
+                                      Excluir
+                                    </Button>
 
                                   </ButtonGroup>
                                 </TableCell>
