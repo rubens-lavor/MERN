@@ -18,183 +18,193 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import SaveIcon from '@material-ui/icons/Save';
 
 import api from "../../../services/api";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    title: {
-        flexGrow: 1,
-    },
-    appBarSpacer: theme.mixins.toolbar,
-    content: {
-        flexGrow: 1,
-        height: '100vh',
-        overflow: 'auto',
-    },
-    container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-    },
-    paper: {
-        padding: 15,
-        display: 'flex',
-        overflow: 'auto',
-        flexDirection: 'column',
-    },
+  root: {
+    display: 'flex',
+  },
+  title: {
+    flexGrow: 1,
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: 15,
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
 
-    formControl: {
-        width: "100%"
-    },
-    btnSuccess:{ backgroundColor:"green", color:"#fff","&:hover":{backgroundColor:"#12b912"}  }
+  formControl: {
+    width: "100%"
+  },
+  btnSuccess: { backgroundColor: "green", color: "#fff", "&:hover": { backgroundColor: "#12b912" } }
 }));
 
 
 export default function UsuariosCadastrar() {
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [tipo, setTipo] = useState('');
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [tipo, setTipo] = useState('');
 
-    const { idUsuario } = useParams()
+  const { idUsuario } = useParams()
 
-    useEffect(() => {
-        async function getUsuario() {
-            var response = await api.get('/api/usuarios/' + idUsuario)
+  useEffect(() => {
+    async function getUsuario() {
+      var response = await api.get('/api/usuarios/' + idUsuario)
 
-            setNome(response.data.nome_usuario)
-            setEmail(response.data.email_usuario)
-            setSenha(response.data.senha_usuario)
-            setTipo(response.data.tipo_usuario)
-        }
-
-        getUsuario()
-    }, [])
-
-
-    async function handleSubmit() {
-
-        const data = {
-            nome_usuario: nome,
-            email_usuario: email,
-            senha_usuario: senha,
-            tipo_usuario: tipo,
-            _id: idUsuario,
-        }
-
-        if (nome !== '' && email !== '' && senha !== '' && tipo !== '') {
-
-            const response = await api.put("/api/usuarios", data);
-
-            if (response.status === 200) {
-                window.location.href = "/admin/usuarios"
-            } else {
-                alert("Erro ao atualizar o usuário");
-            }
-
-        } else {
-            alert("preencha todo os campos");
-        }
+      setNome(response.data.nome_usuario)
+      setEmail(response.data.email_usuario)
+      setSenha(response.data.senha_usuario)
+      setTipo(response.data.tipo_usuario)
     }
 
-
-    return (
-        <div className={classes.root}>
-
-
-            <MenuAdmin title={'Usuários'} />
-
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-
-                    <Grid container spacing={3}>
-                        <Grid item sm={12}>
-                        <Button style={{marginBottom:10,marginRight:5}} variant="contained" href={'/admin/usuarios'}>Voltar</Button>
-                        <Button style={{marginBottom:10}} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>Cadastrar</Button>
-
-                            <Paper className={classes.paper}>
-
-                                <h2>Atualização de usuários</h2>
-                                <Grid container spacing={3}>
-                                    <Grid item xs={12} sm={12}>
-                                        <TextField
-                                            required
-                                            id="nome"
-                                            name="nome"
-                                            label="Nome completo"
-                                            fullWidth
-                                            autoComplete="nome"
-                                            value={nome}
-                                            onChange={ev => setNome(ev.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={6}>
-                                        <TextField
-                                            required
-                                            id="email"
-                                            name="email"
-                                            label="E-mail"
-                                            fullWidth
-                                            autoComplete="email"
-                                            value={email}
-                                            onChange={ev => setEmail(ev.target.value)}
-                                        />
-                                    </Grid>
+    getUsuario()
+  }, [])
 
 
-                                    <Grid item xs={12} sm={3}>
-                                        <FormControl className={classes.formControl}>
-                                            <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
-                                            <Select
-                                                labelId="labelTipo"
-                                                id="tipo"
-                                                value={tipo}
-                                                onChange={ev => setTipo(ev.target.value)}
-                                            >
-                                                <MenuItem value={1}>Administrador</MenuItem>
-                                                <MenuItem value={2}>Gerente</MenuItem>
-                                                <MenuItem value={3}>Funcionário</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
+  async function handleSubmit() {
 
-                                    <Grid item xs={12} sm={3}>
-                                        <TextField
-                                            type="password"
-                                            required
-                                            id="senha"
-                                            name="senha"
-                                            label="senha"
-                                            fullWidth
-                                            autoComplete="senha"
-                                            value={senha}
-                                            onChange={ev => setSenha(ev.target.value)}
-                                        />
-                                    </Grid>
+    const data = {
+      nome_usuario: nome,
+      email_usuario: email,
+      senha_usuario: senha,
+      tipo_usuario: tipo,
+      _id: idUsuario,
+    }
 
-                                    <Grid item xs={12} sm={12}>
-                                        <Button variant="contained" onClick={handleSubmit} className={classes.btnSuccess}>
-                                            Salvar
-                                        </Button>
-                                    </Grid>
-                                </Grid>
+    if (nome !== '' && email !== '' && senha !== '' && tipo !== '') {
 
-                            </Paper>
-                        </Grid>
-                    </Grid>
+      const response = await api.put("/api/usuarios", data);
 
-                    <Box pt={4}>
-                        <Footer />
-                    </Box>
+      if (response.status === 200) {
+        window.location.href = "/admin/usuarios"
+      } else {
+        alert("Erro ao atualizar o usuário");
+      }
 
-                </Container>
-            </main>
-        </div>
-    );
+    } else {
+      alert("preencha todo os campos");
+    }
+  }
+
+
+  return (
+    <div className={classes.root}>
+
+
+      <MenuAdmin title={'Usuários'} />
+
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+
+          <Grid container spacing={3}>
+            <Grid item sm={12}>
+              <Button style={{ marginBottom: 10, marginRight: 5 }} variant="contained" href={'/admin/usuarios'}>
+                <ArrowBackIcon />
+                Voltar
+              </Button>
+              <Button style={{ marginBottom: 10 }} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>
+                <AddIcon />
+                Cadastrar
+              </Button>
+
+              <Paper className={classes.paper}>
+
+                <h2>Atualização de usuários</h2>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} sm={12}>
+                    <TextField
+                      required
+                      id="nome"
+                      name="nome"
+                      label="Nome completo"
+                      fullWidth
+                      autoComplete="nome"
+                      value={nome}
+                      onChange={ev => setNome(ev.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      id="email"
+                      name="email"
+                      label="E-mail"
+                      fullWidth
+                      autoComplete="email"
+                      value={email}
+                      onChange={ev => setEmail(ev.target.value)}
+                    />
+                  </Grid>
+
+
+                  <Grid item xs={12} sm={3}>
+                    <FormControl className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
+                      <Select
+                        labelId="labelTipo"
+                        id="tipo"
+                        value={tipo}
+                        onChange={ev => setTipo(ev.target.value)}
+                      >
+                        <MenuItem value={1}>Administrador</MenuItem>
+                        <MenuItem value={2}>Gerente</MenuItem>
+                        <MenuItem value={3}>Funcionário</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+
+                  <Grid item xs={12} sm={3}>
+                    <TextField
+                      type="password"
+                      required
+                      id="senha"
+                      name="senha"
+                      label="senha"
+                      fullWidth
+                      autoComplete="senha"
+                      value={senha}
+                      onChange={ev => setSenha(ev.target.value)}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12}>
+                    <Button variant="contained" onClick={handleSubmit} className={classes.btnSuccess}>
+                      <SaveIcon/>
+                      Salvar
+                    </Button>
+                  </Grid>
+                </Grid>
+
+              </Paper>
+            </Grid>
+          </Grid>
+
+          <Box pt={4}>
+            <Footer />
+          </Box>
+
+        </Container>
+      </main>
+    </div>
+  );
 }
