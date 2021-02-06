@@ -29,6 +29,9 @@ import Chip from '@material-ui/core/Chip';
 import { getNomeTipo, getNomeTipoLabel } from '../../../functions/static_date'
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+import AddIcon from '@material-ui/icons/Add';
+import RefreshIcon from '@material-ui/icons/Refresh';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -71,7 +74,7 @@ export default function UsuariosListagem() {
       setUsuarios(response.data);
       setLoading(false);
     }
-    
+
     //setTimeout(()=>loadUsuarios(),1000)
     loadUsuarios();
   }, []);
@@ -99,7 +102,10 @@ export default function UsuariosListagem() {
 
           <Grid container spacing={3}>
             <Grid item sm={12}>
-              <Button style={{ marginBottom: 10 }} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>Cadastrar</Button>
+              <Button style={{ marginBottom: 10 }} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>
+                <AddIcon />
+                Cadastrar
+              </Button>
               <Paper className={classes.paper}>
 
                 <h2>Listagem de usuários</h2>
@@ -135,7 +141,10 @@ export default function UsuariosListagem() {
                                 <TableCell align="right">
 
                                   <ButtonGroup aria-label="outlined primary button group">
-                                    <Button variant="contained" color="primary" href={'/admin/usuarios/editar/' + row._id}>Atualizar</Button>
+                                    <Button variant="contained" color="primary" href={'/admin/usuarios/editar/' + row._id}>
+                                      <RefreshIcon />
+                                      Atualizar
+                                    </Button>
                                     <Button color="secondary" onClick={() => handleDelete(row._id)}>Excluir</Button>
 
 
