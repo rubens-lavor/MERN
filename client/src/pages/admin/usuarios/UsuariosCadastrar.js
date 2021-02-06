@@ -19,6 +19,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 import Button from '@material-ui/core/Button';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import SaveIcon from '@material-ui/icons/Save';
 
 import api from "../../../services/api";
 
@@ -111,7 +113,10 @@ export default function UsuariosCadastrar() {
           <Grid container spacing={3}>
             <Grid item sm={12}>
 
-              <Button style={{ marginBottom: 10 }} variant="contained" href={'/admin/usuarios'}>Voltar</Button>
+              <Button style={{ marginBottom: 10 }} variant="contained" href={'/admin/usuarios'}>
+                <ArrowBackIcon />
+                Voltar
+              </Button>
 
               <Paper className={classes.paper}>
 
@@ -175,6 +180,7 @@ export default function UsuariosCadastrar() {
                   
                   <Grid item xs={12} sm={12}>
                     <Button variant="contained" onClick={handleSubmit} className={classes.btnSuccess}>
+                      <SaveIcon />
                       Salvar
                     </Button>
                   </Grid>
