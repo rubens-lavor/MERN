@@ -5,7 +5,6 @@ import Container from '@material-ui/core/Container';
 
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-//import ImgAdmin from "../../../assets/img/painel-mock.png"
 import Grid from '@material-ui/core/Grid';
 
 
@@ -63,17 +62,6 @@ export default function UsuariosCadastrar() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [tipo, setTipo] = useState('');
-
-  // eslint-disable-next-line
-  {/*
-    outra forma de fazer
-  const { form, setForm } = useState({
-    nome:'',
-    email:'',
-    senha:'',
-    tipo:''
-  });
-  */}
 
   async function handleSubmit() {
 
@@ -177,7 +165,7 @@ export default function UsuariosCadastrar() {
                       onChange={ev => setSenha(ev.target.value)}
                     />
                   </Grid>
-                  
+
                   <Grid item xs={12} sm={12}>
                     <Button variant="contained" onClick={handleSubmit} className={classes.btnSuccess}>
                       <SaveIcon />
